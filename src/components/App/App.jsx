@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
 import { fetchPhotos } from "../PhotoSearch";
 import SearchBar from "../SearchBar/SearchBar";
+import İmageGallery from "../İmageGallery/İmageGallery";
 
 export default function App() {
-  const [clicks, setClicks] = useState(0);
+  const [photos, setPhotos] = useState([]);
 
   const handleSearch = async (topik) => {
     try {
       const data = await fetchPhotos(topik);
-      console.log(data);
+      setPhotos(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // useEffect(() => {
-  //   console.log(clicks);
-  //   async function getPhotos() {
-  //     try {
-  //       const data = await fetchPhotos();
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   getPhotos();
-  // }, [clicks]);
-
   return (
     <>
-      <SearchBar onSearch={handleSearch} clicks={clicks} />
+      <SearchBar onSearch={handleSearch} />
+      <İmageGallery items={photos} />
     </>
   );
 }
