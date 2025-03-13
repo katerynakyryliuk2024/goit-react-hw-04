@@ -30,7 +30,7 @@ export default function App() {
     // }
   };
   const handleClick = () => {
-    return setPage(page + 1);
+    setPage(page + 1);
   };
 
   useEffect(() => {
