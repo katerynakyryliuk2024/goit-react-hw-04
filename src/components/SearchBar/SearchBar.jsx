@@ -1,7 +1,12 @@
 import css from "./SearchBar.module.css";
 import { Formik, Field, Form } from "formik";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SearchBar({ onSearch }) {
+  // const notify = () => toast("please full fill some searching info");
+  // if (values.info === '') {
+  //   return <Toaster />;
+  // }
   return (
     <header>
       <Formik
