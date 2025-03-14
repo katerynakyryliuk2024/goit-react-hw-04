@@ -13,8 +13,8 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [searchTearm, setSearchTearm] = useState("");
 
-  const handleSearch = async (topik) => {
-    setSearchTearm(topik);
+  const handleSearch = async (topic) => {
+    setSearchTearm(topic);
     setPage(1);
     // try {
     //   setError(false);
@@ -37,7 +37,10 @@ export default function App() {
     async function getData() {
       try {
         const data = await fetchPhotos(searchTearm, page);
-      } catch (error) {}
+        setPhotos(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
     getData();
   }, [page, searchTearm]);

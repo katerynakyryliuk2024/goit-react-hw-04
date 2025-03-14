@@ -3,10 +3,6 @@ import { Formik, Field, Form } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function SearchBar({ onSearch }) {
-  // const notify = () => toast("please full fill some searching info");
-  // if (values.info === '') {
-  //   return <Toaster />;
-  // }
   return (
     <header>
       <Formik
@@ -14,6 +10,10 @@ export default function SearchBar({ onSearch }) {
           info: "",
         }}
         onSubmit={(values, actions) => {
+          if (!values.info.trim()) {
+            toast.error("please full fill some searching info");
+            return;
+          }
           onSearch(values.info);
           actions.resetForm();
         }}
@@ -30,6 +30,16 @@ export default function SearchBar({ onSearch }) {
           <button className={css.searchBnt} type="submit">
             Search
           </button>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+            toastOptions={{
+              style: {
+                background: "blue",
+                color: "yellow",
+              },
+            }}
+          />
         </Form>
       </Formik>
     </header>
