@@ -1,6 +1,6 @@
-import css from "./İmageGallery.module.css";
-import İmageCard from "../İmageCard/İmageCard";
-import İmageModal from "../İmageModal/İmageModal";
+import css from "./ImageGallery.modules.css";
+import ImageCard from "../ImageCard/ImageCard";
+import ImageModal from "../ImageModal/ImageModal";
 import { useState } from "react";
 
 export default function ImageGallery({ items }) {
@@ -20,11 +20,11 @@ export default function ImageGallery({ items }) {
     <ul className={css.list}>
       {items.map((item) => (
         <li key={item.id}>
-          <İmageCard item={item} onClick={() => openModal(item)} />
+          <ImageCard item={item} onClick={() => openModal(item)} />
         </li>
       ))}
 
-      <İmageModal
+      <ImageModal
         isOpen={modalİsOpen}
         onClose={closeModal}
         image={selectedİmage}

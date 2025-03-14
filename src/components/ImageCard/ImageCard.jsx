@@ -1,4 +1,4 @@
-import css from "./İmageCard.module.css";
+import css from "./ImageCard.modules.css";
 
 export default function ImageCard({ item, onClick }) {
   return (

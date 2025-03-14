@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPhotos } from "../PhotoSearch";
 import SearchBar from "../SearchBar/SearchBar";
-import İmageGallery from "../İmageGallery/İmageGallery";
+import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
@@ -49,7 +49,7 @@ export default function App() {
       <SearchBar onSearch={handleSearch} />
       {error && <ErrorMessage />}
 
-      {photos.length > 0 && <İmageGallery items={photos} />}
+      {photos.length > 0 && <ImageGallery items={photos} />}
 
       {isLoading && <Loader />}
 

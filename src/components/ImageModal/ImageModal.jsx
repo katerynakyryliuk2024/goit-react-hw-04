@@ -17,7 +17,7 @@ const modalStyles = {
   },
 };
 
-export default function İmageModal({ isOpen, onClose, image }) {
+export default function ImageModal({ isOpen, onClose, image }) {
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={modalStyles}>
       <button onClick={onClose} style={{ float: "right" }}>
