@@ -24,6 +24,9 @@ export default function App() {
   };
 
   useEffect(() => {
+    if (searchTearm === "") {
+      return;
+    }
     async function getData() {
       try {
         setError(false);
