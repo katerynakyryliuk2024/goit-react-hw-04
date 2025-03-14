@@ -13,6 +13,7 @@ const modalStyles = {
     overflow: "hidden",
     backgroundColor: "black",
     padding: "15px",
+    borderRadius: "10px",
   },
 };
 
