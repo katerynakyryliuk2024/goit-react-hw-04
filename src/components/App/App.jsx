@@ -11,10 +11,10 @@ export default function App() {
   const [isLoading, setİsloading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
-  const [searchTearm, setSearchTearm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (topic) => {
-    setSearchTearm(topic);
+    setSearchTerm(`${topic}/${Date.now()}`);
     setPage(1);
     setPhotos([]);
   };
@@ -24,14 +24,14 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (searchTearm === "") {
+    if (searchTerm === "") {
       return;
     }
     async function getData() {
       try {
         setError(false);
         setİsloading(true);
-        const data = await fetchPhotos(searchTearm, page);
+        const data = await fetchPhotos(searchTerm.split("/")[0], page);
         setPhotos((prevPhotos) => {
           return [...prevPhotos, ...data];
         });
@@ -42,7 +42,7 @@ export default function App() {
       }
     }
     getData();
-  }, [page, searchTearm]);
+  }, [page, searchTerm]);
 
   return (
     <>
