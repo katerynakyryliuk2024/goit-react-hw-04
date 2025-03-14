@@ -1,4 +1,4 @@
-import css from "./ImageGallery.modules.css";
+import css from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
 import ImageModal from "../ImageModal/ImageModal";
 import { useState } from "react";
