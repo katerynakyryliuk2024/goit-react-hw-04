@@ -6,7 +6,7 @@ export const fetchPhotos = async (topic, currentPage) => {
     {
       params: {
         query: topic,
-        per_page: 5,
+        per_page: 6,
         page: currentPage,
       },
     }

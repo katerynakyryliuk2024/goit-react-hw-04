@@ -16,19 +16,9 @@ export default function App() {
   const handleSearch = async (topic) => {
     setSearchTearm(topic);
     setPage(1);
-    // try {
-    //   setError(false);
-    //   setİsloading(true);
-    //   setPhotos([]);
-    //   const data = await fetchPhotos(topik);
-    //   setPhotos(data);
-    //   setİsloading(false);
-    // } catch (error) {
-    //   setError(true);
-    // } finally {
-    //   setİsloading(false);
-    // }
+    setPhotos([]);
   };
+
   const handleClick = () => {
     setPage(page + 1);
   };
@@ -36,10 +26,16 @@ export default function App() {
   useEffect(() => {
     async function getData() {
       try {
+        setError(false);
+        setİsloading(true);
         const data = await fetchPhotos(searchTearm, page);
-        setPhotos(data);
-      } catch (error) {
-        console.log(error);
+        setPhotos((prevPhotos) => {
+          return [...prevPhotos, ...data];
+        });
+      } catch {
+        setError(true);
+      } finally {
+        setİsloading(false);
       }
     }
     getData();
@@ -54,7 +50,9 @@ export default function App() {
 
       {isLoading && <Loader />}
 
-      {photos.length > 0 && <LoadMoreBtn handleClick={handleClick} />}
+      {photos.length > 0 && !isLoading && (
+        <LoadMoreBtn handleClick={handleClick} />
+      )}
     </>
   );
 }
