@@ -23,6 +23,7 @@ export default function ImageGallery({ items }) {
           <İmageCard item={item} onClick={() => openModal(item)} />
         </li>
       ))}
+
       <İmageModal
         isOpen={modalİsOpen}
         onClose={closeModal}
