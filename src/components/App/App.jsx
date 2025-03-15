@@ -5,6 +5,7 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "../ImageModal/ImageModal";
 
 export default function App() {
   const [photos, setPhotos] = useState([]);
@@ -12,15 +13,26 @@ export default function App() {
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [modalİsOpen, setModalİsOpen] = useState(false);
+  const [selectedİmage, setSelectedİmage] = useState(null);
 
   const handleSearch = async (topic) => {
     setSearchTerm(`${topic}/${Date.now()}`);
+
     setPage(1);
     setPhotos([]);
   };
 
   const handleClick = () => {
     setPage(page + 1);
+  };
+  const openModal = (item) => {
+    setSelectedİmage(item);
+    setModalİsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalİsOpen(false);
   };
 
   useEffect(() => {
@@ -49,7 +61,15 @@ export default function App() {
       <SearchBar onSearch={handleSearch} />
       {error && <ErrorMessage />}
 
-      {photos.length > 0 && <ImageGallery items={photos} />}
+      {photos.length > 0 && (
+        <ImageGallery items={photos} onImageClick={openModal} />
+      )}
+
+      <ImageModal
+        isOpen={modalİsOpen}
+        onClose={closeModal}
+        image={selectedİmage}
+      />
 
       {isLoading && <Loader />}
 
